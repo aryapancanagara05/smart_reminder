@@ -15,7 +15,7 @@
             <form action="">
                 <div class="form-username">
                     <label for="" class="label">Username</label>
-                    <input type="text" class="input-group">
+                    <input type="text" class="input-group" required>
                 </div>
                 <div class="form-email">
                     <label for="" class="label">Email</label>
