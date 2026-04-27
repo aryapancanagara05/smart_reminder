@@ -22,7 +22,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="register">
-                <p>belum punya akun? <a href="/register">daftar disini</a></p>
+                <p>belum punya akun? <a href="/register">daftar </a></p>
             </div>
             <button type="submit">Login</button>
         </form>
