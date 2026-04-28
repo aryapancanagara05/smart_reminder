@@ -135,7 +135,7 @@ body {
     font-weight: 500;
     cursor: pointer;
     margin-bottom: 2px;
-    transition: background .15s, color .15s;
+    transition: background .15s, color .15s; 
 }
 
 .nav-item:hover {
@@ -798,6 +798,89 @@ body {
 
 .r-del:hover {
     color: var(--rose);
+}
+
+/* DATABASE REMINDER ITEM STYLES */
+.reminder-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    transition: border-color .15s;
+    animation: fadeIn .25s ease;
+}
+
+.reminder-item:hover {
+    border-color: var(--gray-300);
+}
+
+.reminder-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.reminder-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+}
+
+.reminder-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.reminder-note {
+    font-size: 11px;
+    color: var(--gray-400);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.reminder-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.reminder-time {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-400);
+}
+
+.reminder-amount {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--purple);
+    background: var(--purple-bg);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* Badge status */
+.status-pending {
+    background: #FFFBEB;
+    color: #D97706;
+}
+
+.status-done {
+    background: #ECFDF5;
+    color: #059669;
+}
+
+.status-overdue {
+    background: var(--rose-bg);
+    color: #BE123C;
 }
 
 /* Saat list kosong */
