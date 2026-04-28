@@ -290,7 +290,7 @@
                 </div><!-- /main-grid -->
             </div><!-- /content -->
         </div><!-- /main -->
-    </div><!-- /shell -->
+    </div><!-- /shell --->
 
 </body>
 
