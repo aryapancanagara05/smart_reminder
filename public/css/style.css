@@ -272,17 +272,41 @@ body {
 
 /* Avatar */
 .avatar {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #7B6FDF, #5B4FCF);
     color: white;
     font-size: 13px;
     font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
+    position: relative;
+}
+
+.switch {
+    flex-direction: column;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 7px;
+    color: #C7D2FE;
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+}
+.switch:hover{
+    background: rgba(255, 255, 255, .06);
+    color: white;
+    
+}
+
+#menu {
+    position: absolute;
+    background: linear-gradient(135deg, #7B6FDF, #5B4FCF);
+    border-radius: 7px;
+    margin-top: 5px;
+    margin-right: px;
 }
 
 

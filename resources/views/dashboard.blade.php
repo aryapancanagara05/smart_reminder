@@ -105,19 +105,11 @@
                     </svg>
                     Pengaturan
                 </div>
-                <div class="nav-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-                        <polyline points="16 17 21 12 16 7" />
-                        <line x1="21" y1="12" x2="9" y2="12" />
-                    </svg>
-                    Logout
-                </div>
             </div>
 
         </aside>
 
-        
+
         <!-- /SIDEBAR -->
         <!--  AREA KANAN  -->
         <div class="main">
@@ -143,7 +135,14 @@
                         </svg>
                         <div class="notif-dot" id="notif-dot"></div>
                     </div>
-                    <div class="avatar">JD</div>
+                    <div class="">
+                        <button onclick="menu.hidden^=1" class="avatar">JD</button>
+                        <ul id="menu" hidden>
+                            <a class="switch"href="/login">log out</a>
+                            <a class="switch"href="/profil_edit">edit profil</a>
+                        </ul>
+                    </div>
+                    
                 </div>
             </nav>
 
