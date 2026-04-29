@@ -317,7 +317,7 @@
                 </div><!-- /main-grid -->
             </div><!-- /content -->
         </div><!-- /main -->
-    </div><!-- /shell -->
+    </div><!-- /shell --->
 
 </body>
 <script src="js/script.js"></script>
