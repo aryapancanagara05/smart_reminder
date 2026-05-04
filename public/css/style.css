@@ -135,7 +135,7 @@ body {
     font-weight: 500;
     cursor: pointer;
     margin-bottom: 2px;
-    transition: background .15s, color .15s; 
+    transition: background .15s, color .15s;
 }
 
 .nav-item:hover {
@@ -272,33 +272,17 @@ body {
 
 /* Avatar */
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: linear-gradient(135deg, #7B6FDF, #5B4FCF);
     color: white;
     font-size: 13px;
     font-weight: 700;
-    cursor: pointer;
-    position: relative;
-}
-
-.switch {
-    flex-direction: column;
-    display: block;
-    justify-content: center;
+    display: flex;
     align-items: center;
-    text-decoration: none;
-    padding: 7px;
-    color: #C7D2FE;
-    padding-left: 10px;
-    height: 100%;
-    width: 100%;
-}
-.switch:hover{
-    background: rgba(255, 255, 255, .06);
-    color: white;
-    
+    justify-content: center;
+    cursor: pointer;
 }
 
 #menu {

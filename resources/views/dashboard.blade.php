@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -105,6 +106,14 @@
                     </svg>
                     Pengaturan
                 </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                   Logout
+                </div>
             </div>
 
         </aside>
@@ -135,14 +144,7 @@
                         </svg>
                         <div class="notif-dot" id="notif-dot"></div>
                     </div>
-                    <div class="">
-                        <button onclick="menu.hidden^=1" class="avatar">JD</button>
-                        <ul id="menu" hidden>
-                            <a class="switch"href="/login">log out</a>
-                            <a class="switch"href="/profil_edit">edit profil</a>
-                        </ul>
-                    </div>
-                    
+
                 </div>
             </nav>
 
@@ -150,16 +152,13 @@
             <div class="content">
 
                 <!-- Header halaman -->
-                @foreach ($Admins as $admin )
-                <div class="page-header">
-                   
-                       
-                   
-                    <h2>Selamat Datang,{{$admin['username']}}</h2>
-                    <p>Semua sistem berjalan lancar. Anda memiliki
+                @foreach ($Admins as $admin)
+                    <div class="page-header">
+                        <h2>Selamat Datang,{{ $admin->username }}</h2>
+                        <p>Semua sistem berjalan lancar. Anda memiliki
                             <span id="overdue-text">{{ $overdue ?? 0 }} pengingat terlewat.</span>
-                    </p>
-                </div>
+                        </p>
+                    </div>
                 @endforeach
 
                 <!-- Alert notifikasi (tampil otomatis via JS) -->
@@ -230,22 +229,27 @@
                         <!-- List item pengingat (diisi JS) -->
                         <div class="reminder-list" id="reminder-list">
                             @forelse($reminders ?? [] as $reminder)
-                                <div class="reminder-item" data-priority="{{ $reminder->priority }}" data-status="{{ $reminder->status }}">
+                                <div class="reminder-item" data-priority="{{ $reminder->priority }}"
+                                    data-status="{{ $reminder->status }}">
                                     <div class="reminder-info">
                                         <div class="reminder-title">{{ $reminder->title }}</div>
                                         <div class="reminder-meta">
-                                            <span class="badge priority-{{ $reminder->priority }}">{{ ucfirst($reminder->priority) }}</span>
-                                            <span class="badge status-{{ $reminder->status }}">{{ ucfirst($reminder->status) }}</span>
-                                            @if($reminder->reminder_time)
-                                                <span class="reminder-time">{{ $reminder->reminder_time->format('d M Y H:i') }}</span>
+                                            <span
+                                                class="badge priority-{{ $reminder->priority }}">{{ ucfirst($reminder->priority) }}</span>
+                                            <span
+                                                class="badge status-{{ $reminder->status }}">{{ ucfirst($reminder->status) }}</span>
+                                            @if ($reminder->reminder_time)
+                                                <span
+                                                    class="reminder-time">{{ $reminder->reminder_time->format('d M Y H:i') }}</span>
                                             @endif
                                         </div>
-                                        @if($reminder->note)
+                                        @if ($reminder->note)
                                             <div class="reminder-note">{{ $reminder->note }}</div>
                                         @endif
                                     </div>
                                     <div class="reminder-actions">
-                                        <span class="reminder-amount">{{ $reminder->amount }} {{ $reminder->unit }}</span>
+                                        <span class="reminder-amount">{{ $reminder->amount }}
+                                            {{ $reminder->unit }}</span>
                                     </div>
                                 </div>
                             @empty
