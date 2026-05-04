@@ -150,12 +150,17 @@
             <div class="content">
 
                 <!-- Header halaman -->
+                @foreach ($Admins as $admin )
                 <div class="page-header">
-                    <h2>Selamat Datang,jonh</h2>
+                   
+                       
+                   
+                    <h2>Selamat Datang,{{$admin['username']}}</h2>
                     <p>Semua sistem berjalan lancar. Anda memiliki
-                        <span id="overdue-text">0 pengingat terlewat.</span>
+                            <span id="overdue-text">{{ $overdue ?? 0 }} pengingat terlewat.</span>
                     </p>
                 </div>
+                @endforeach
 
                 <!-- Alert notifikasi (tampil otomatis via JS) -->
                 <div class="alert-bar" id="alert-bar">
@@ -171,19 +176,19 @@
                 <div class="stats-row">
                     <div class="stat-card card-blue" onclick="setTab('all')">
                         <div class="stat-label">Total Pengingat</div>
-                        <div class="stat-num" id="sc-total">0</div>
+                        <div class="stat-num" id="sc-total">{{ $total ?? 0 }}</div>
                         <div class="stat-sub">semua kategori</div>
                         <div class="stat-deco"></div>
                     </div>
                     <div class="stat-card card-indigo" onclick="setTab('upcoming')">
                         <div class="stat-label">Akan Datang</div>
-                        <div class="stat-num" id="sc-upcoming">0</div>
+                        <div class="stat-num" id="sc-upcoming">{{ $upcoming ?? 0 }}</div>
                         <div class="stat-sub">belum jatuh tempo</div>
                         <div class="stat-deco"></div>
                     </div>
                     <div class="stat-card card-green" onclick="setTab('done')">
                         <div class="stat-label">Selesai</div>
-                        <div class="stat-num" id="sc-done">0</div>
+                        <div class="stat-num" id="sc-done">{{ $done ?? 0 }}</div>
                         <div class="stat-sub">berhasil diselesaikan</div>
                         <div class="stat-deco"></div>
                     </div>
@@ -202,13 +207,13 @@
                         <!-- Tab filter -->
                         <div class="tab-bar">
                             <button class="tab-btn active" id="tab-all" onclick="setTab('all')"> Semua <span
-                                    class="tab-count" id="tc-all">0</span></button>
+                                    class="tab-count" id="tc-all">{{ $total ?? 0 }}</span></button>
                             <button class="tab-btn" id="tab-upcoming" onclick="setTab('upcoming')"> Akan Datang <span
-                                    class="tab-count" id="tc-upcoming">0</span></button>
+                                    class="tab-count" id="tc-upcoming">{{ $upcoming ?? 0 }}</span></button>
                             <button class="tab-btn" id="tab-done" onclick="setTab('done')"> Selesai <span
-                                    class="tab-count" id="tc-done">0</span></button>
+                                    class="tab-count" id="tc-done">{{ $done ?? 0 }}</span></button>
                             <button class="tab-btn" id="tab-overdue" onclick="setTab('overdue')"> Terlewat <span
-                                    class="tab-count" id="tc-overdue">0</span></button>
+                                    class="tab-count" id="tc-overdue">{{ $overdue ?? 0 }}</span></button>
                         </div>
 
                         <!-- Progress bar -->
@@ -223,7 +228,30 @@
                         </div>
 
                         <!-- List item pengingat (diisi JS) -->
-                        <div class="reminder-list" id="reminder-list"></div>
+                        <div class="reminder-list" id="reminder-list">
+                            @forelse($reminders ?? [] as $reminder)
+                                <div class="reminder-item" data-priority="{{ $reminder->priority }}" data-status="{{ $reminder->status }}">
+                                    <div class="reminder-info">
+                                        <div class="reminder-title">{{ $reminder->title }}</div>
+                                        <div class="reminder-meta">
+                                            <span class="badge priority-{{ $reminder->priority }}">{{ ucfirst($reminder->priority) }}</span>
+                                            <span class="badge status-{{ $reminder->status }}">{{ ucfirst($reminder->status) }}</span>
+                                            @if($reminder->reminder_time)
+                                                <span class="reminder-time">{{ $reminder->reminder_time->format('d M Y H:i') }}</span>
+                                            @endif
+                                        </div>
+                                        @if($reminder->note)
+                                            <div class="reminder-note">{{ $reminder->note }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="reminder-actions">
+                                        <span class="reminder-amount">{{ $reminder->amount }} {{ $reminder->unit }}</span>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="empty-state">Belum ada pengingat. Tambahkan pengingat baru!</div>
+                            @endforelse
+                        </div>
                     </div>
 
                     <!-- PANEL KANAN: Form Tambah -->
@@ -289,9 +317,9 @@
                 </div><!-- /main-grid -->
             </div><!-- /content -->
         </div><!-- /main -->
-    </div><!-- /shell --->
+    </div><!-- /shell -->
 
 </body>
-
+<script src="js/script.js"></script>
 
 </html>

@@ -1,18 +1,22 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
-    return view('login ');
+    return view('login');
 });
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard',['Admins'=> Admin::all()]);
 });
+
 Route::get('/register', function () {
     return view('register');
 });
+
 Route::get('/login', function () {
-    return view('login ');
+    return view('login');
 });
 
  
