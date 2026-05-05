@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
             $table->string('judul_kegiatan');
-            $table->text('cacatan');
+            $table->text('catatan');
             $table->integer('waktu');
             $table->string('satuan_waktu');
-            $table->string('tingkat_kepentingan');
+            $table->enum('tingkat_kepentingan', ['tidak penting', 'penting', 'sangat penting'])->default('tidak penting');
+            $table->enum('status', ['akan datang', 'selesai', 'terlewat'])->default('akan datang');
             $table->timestamps();
         });
     }

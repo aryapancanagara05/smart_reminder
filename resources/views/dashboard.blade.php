@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -112,7 +111,7 @@
                         <polyline points="16 17 21 12 16 7" />
                         <line x1="21" y1="12" x2="9" y2="12" />
                     </svg>
-                   Logout
+                    Logout
                 </div>
             </div>
 
@@ -226,34 +225,68 @@
                             </div>
                         </div>
 
-                        <!-- List item pengingat (diisi JS) -->
+                        <!-- List item pengingat -->
                         <div class="reminder-list" id="reminder-list">
-                            @forelse($reminders ?? [] as $reminder)
-                                <div class="reminder-item" data-priority="{{ $reminder->priority }}"
-                                    data-status="{{ $reminder->status }}">
-                                    <div class="reminder-info">
-                                        <div class="reminder-title">{{ $reminder->title }}</div>
-                                        <div class="reminder-meta">
-                                            <span
-                                                class="badge priority-{{ $reminder->priority }}">{{ ucfirst($reminder->priority) }}</span>
-                                            <span
-                                                class="badge status-{{ $reminder->status }}">{{ ucfirst($reminder->status) }}</span>
-                                            @if ($reminder->reminder_time)
-                                                <span
-                                                    class="reminder-time">{{ $reminder->reminder_time->format('d M Y H:i') }}</span>
+                            @forelse ($jadwal as $item)
+                                <div class="reminder-item {{ $item->status === 'done' ? 'item-done' : '' }}"
+                                    data-id="{{ $item->id }}">
+                                    <div class="item-left">
+                                        <div class="custom-checkbox {{ $item->status === 'done' ? 'checked' : '' }}"
+                                            onclick="updateStatus({{ $item->id }})">
+                                            @if ($item->status === 'done')
+                                                ✓
                                             @endif
                                         </div>
-                                        @if ($reminder->note)
-                                            <div class="reminder-note">{{ $reminder->note }}</div>
-                                        @endif
+
+                                        <div class="item-info">
+                                            <h4 class="item-title">{{ $item->title }}</h4>
+                                            <p class="item-note">{{ $item->note ?? 'Tidak ada catatan' }}</p>
+
+                                            <div class="item-meta">
+                                                <span class="meta-time">
+                                                    <svg width="12" height="12" viewBox="0 0 24 24"
+                                                        fill="none" stroke="currentColor" stroke-width="2">
+                                                        <circle cx="12" cy="12" r="10" />
+                                                        <polyline points="12 6 12 12 16 14" />
+                                                    </svg>
+                                                    {{ \Carbon\Carbon::parse($item->due_date)->format('H:i d-m-Y') }}
+                                                </span>
+
+                                                @php
+                                                    $prioClass =
+                                                        [
+                                                            'high' => 'prio-high',
+                                                            'medium' => 'prio-medium',
+                                                            'low' => 'prio-low',
+                                                        ][$item->priority] ?? 'prio-low';
+                                                @endphp
+                                                <span
+                                                    class="badge {{ $prioClass }}">{{ strtoupper($item->priority) }}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="reminder-actions">
-                                        <span class="reminder-amount">{{ $reminder->amount }}
-                                            {{ $reminder->unit }}</span>
+
+                                    <div class="item-actions">
+                                        <form action="{{ route('reminder.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-delete"
+                                                onclick="return confirm('Hapus pengingat ini?')">
+                                                <svg width="18" height="18" viewBox="0 0 24 24"
+                                                    fill="none" stroke="currentColor" stroke-width="2">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path
+                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             @empty
-                                <div class="empty-state">Belum ada pengingat. Tambahkan pengingat baru!</div>
+                                <div class="empty-state">
+                                    <p>Belum ada pengingat. Yuk, buat satu!</p>
+                                </div>
                             @endforelse
                         </div>
                     </div>
