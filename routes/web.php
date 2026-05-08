@@ -1,15 +1,18 @@
 <?php
 
-use App\Models\Admin;
+use App\Http\Controllers\JadwalController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('login');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard',['Admins'=> Admin::all()]);
-});
+})->name('login');
+
+Route::get('/dashboard', [JadwalController::class, 'index']
+)->name('dashboard');
+
+Route::post('/dashboard/store', [JadwalController::class, 'store']
+)->name('jadwal.store');
 
 Route::get('/register', function () {
     return view('register');
@@ -18,5 +21,3 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 });
-
- 
