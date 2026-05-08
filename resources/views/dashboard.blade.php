@@ -357,6 +357,6 @@
     </div><!-- /shell -->
 
 </body>
-<script src="js/script.js"></script>
+<script src=""></script>
 
 </html>
