@@ -12,7 +12,7 @@
 <body>
     <div class="shell">
 
-        {{-- ===== SIDEBAR ===== --}}
+        {{-- ===== SIDEBAR ====== --}}
         <aside class="sidebar">
 
             <div class="sidebar-logo">
