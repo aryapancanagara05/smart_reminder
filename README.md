@@ -1,58 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ReminderOS — Smart Reminder App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Mata Kuliah:** [isi nama mata kuliah]  
+**Dosen Pengampu:** [isi nama dosen]  
+**Semester:** [isi semester]  
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Identitas Mahasiswa
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| | |
+|---|---|
+| **KELOMPOK** | [C] |
+| **NAMA KELOMPOK** | [AZRIL,RAFAEL,ARYA  ] |
+| **Kelas** | [XI PPLG] |
+| **Program Studi** | [PROJECT AKHIR PERIODE MAGANG] |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Deskripsi Aplikasi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ReminderOS adalah aplikasi web manajemen pengingat berbasis Laravel. Pengguna dapat membuat, mengelola, dan memantau jadwal kegiatan dengan fitur notifikasi otomatis ketika pengingat hampir jatuh tempo atau sudah terlewat.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Fitur Utama
 
-## Agentic Development
+- Register & Login menggunakan Laravel Breeze
+- Tambah pengingat dengan judul, catatan, durasi waktu, dan tingkat kepentingan
+- Filter pengingat: Semua, Akan Datang, Selesai, dan Terlewat
+- Filter berdasarkan prioritas: Tidak Penting, Penting, Sangat Penting
+- Tandai pengingat selesai / belum selesai
+- Hapus pengingat
+- Notifikasi alert otomatis di dashboard
+- Progress bar penyelesaian
+- Jam real-time di navbar
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## Teknologi yang Digunakan
+
+- **Framework:** Laravel 13
+- **Autentikasi:** Laravel Breeze
+- **Frontend:** Blade Template, CSS, Vite
+- **Database:** MySQL
+- **Library:** Carbon
+
+---
+
+## Cara Menjalankan Aplikasi
+
+### Persyaratan
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL (Laragon / XAMPP)
+
+### Langkah-langkah
+
+**1. Install dependency**
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer install
+npm install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**2. Salin file environment**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+**3. Konfigurasi database di file `.env`**
+```env
+DB_DATABASE=smart_reminder
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**4. Jalankan migrasi**
+```bash
+php artisan migrate
+```
 
-## Code of Conduct
+**5. Build asset & jalankan server**
+```bash
+npm run dev
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**6. Buka di browser**
+```
+http://localhost:8000
+```
 
-## Security Vulnerabilities
+**7. Daftar akun baru** melalui halaman `/register`, lalu login.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## Struktur Database
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Tabel `jadwal`
+
+| Kolom | Tipe | Keterangan |
+|---|---|---|
+| id | bigint | Primary key |
+| user_id | bigint | Foreign key ke tabel users |
+| judul_kegiatan | varchar | Judul pengingat |
+| catatan | text | Catatan tambahan |
+| waktu | integer | Angka durasi |
+| satuan_waktu | varchar | menit / jam / hari |
+| tingkat_kepentingan | enum | tidak penting / penting / sangat penting |
+| status | enum | akan datang / selesai |
+| due_date | datetime | Waktu jatuh tempo |
+| created_at | timestamp | Waktu dibuat |
+
+---
+
+## Tampilan Aplikasi
+
+| Halaman | Keterangan |
+|---|---|
+| `/login` | Halaman masuk akun |
+| `/register` | Halaman daftar akun baru |
+| `/dashboard` | Halaman utama pengingat |
+| `/dashboard?tab=upcoming` | Filter pengingat akan datang |
+| `/dashboard?tab=selesai` | Filter pengingat selesai |
+| `/dashboard?tab=terlewat` | Filter pengingat terlewat |
