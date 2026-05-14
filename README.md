@@ -6,12 +6,12 @@
 
 ---
 
-## Identitas Mahasiswa
+## Identitas Kelompok
 
 | | |
 |---|---|
 | **KELOMPOK** | [C] |
-| **NAMA KELOMPOK** | [AZRIL,RAFAEL,ARYA  ] |
+| **NAMA ANGGOTA KELOMPOK** | [AZRIL,RAFAEL,ARYA  ] |
 | **Kelas** | [XI PPLG] |
 | **Program Studi** | [PROJECT AKHIR PERIODE MAGANG] |
 
