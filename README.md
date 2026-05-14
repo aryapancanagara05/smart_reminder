@@ -1,9 +1,4 @@
 # ReminderOS — Smart Reminder App
-
-**Mata Kuliah:** [isi nama mata kuliah]  
-**Dosen Pengampu:** [isi nama dosen]  
-**Semester:** [isi semester]  
-
 ---
 
 ## Identitas Kelompok
