@@ -24,6 +24,13 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/jadwal/{jadwal}',  [DashboardController::class, 'updateStatus'])->name('jadwal.status');
     Route::delete('/jadwal/{jadwal}', [DashboardController::class, 'destroy'])->name('jadwal.destroy');
     Route::delete('/jadwal-selesai',  [DashboardController::class, 'destroyDone'])->name('jadwal.destroyDone');
+
+    Route::patch('/profile',          [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/password',           [ProfileController::class, 'updatePassword'])->name('password.update');
+    Route::delete('/profile',         [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+
+
+require __DIR__ . '/auth.php';
