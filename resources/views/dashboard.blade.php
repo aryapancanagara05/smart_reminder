@@ -870,7 +870,7 @@
             fill.style.background = lv.color;
             label.textContent = lv.text;
             label.style.color = lv.color;
-        }
+        } 
 
         /* Close modal on overlay click */
         document.addEventListener('click', function(e) {
